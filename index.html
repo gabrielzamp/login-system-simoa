@@ -134,14 +134,16 @@
 
     <!-- Login Submit Function  -->
     <script>
+      // Variables
       const loginFormElement = document.getElementById("loginForm");
       const signUpFormElement = document.getElementById("signUpForm");
 
+      const loginDivElement = document.getElementById("loginDiv");
+      const signUpDivElement = document.getElementById("signUpDiv");
+
       const users = [{ email: "gabriel@simoa.com", password: "admin" }];
 
-      loginFormElement.addEventListener("submit", handleLogin);
-      signUpFormElement.addEventListener("submit", handleSignUp);
-
+      // Login and Sign Up functions
       function handleSignUp(event) {
         event.preventDefault();
 
@@ -150,6 +152,10 @@
 
         const emailValue = emailElement.value.trim();
         const passwordValue = passwordElement.value.trim();
+
+        const isUserExistsWithSamePassword = (email, password) => {
+          return users.some((user) => user.password === password);
+        };
 
         if (isInputEmpty(emailValue, passwordValue)) {
           showAlert("Por favor, preencha todos os campos.");
@@ -160,27 +166,17 @@
           showAlert(
             `Já existe um usuário com o email "${existingUser.email}" e a mesma senha "${passwordValue}".`
           );
+
+          emailElement.value = "";
+          passwordElement.value = "";
         } else {
           users.push({
             email: emailValue,
             password: passwordValue,
           });
           showAlert("Cadastro realizado com sucesso!");
-          emailElement.value = "";
-          passwordElement.value = "";
+          cleanFormFields(emailElement, passwordElement);
         }
-      }
-
-      function isInputEmpty(email, password) {
-        return email === "" || password === "";
-      }
-
-      function isUserExistsWithSamePassword(email, password) {
-        return users.some((user) => user.password === password);
-      }
-
-      function showAlert(message) {
-        alert(message);
       }
 
       function handleLogin(event) {
@@ -192,6 +188,12 @@
         const emailValue = emailElement.value.trim();
         const passwordValue = passwordElement.value.trim();
 
+        const isValidUser = (email, password) => {
+          return users.some(
+            (user) => user.email === email && user.password === password
+          );
+        };
+
         if (isValidUser(emailValue, passwordValue)) {
           showAlert("Login bem-sucedido! Seja bem-vindo(a)!");
         } else if (isInputEmpty(emailValue, passwordValue)) {
@@ -199,57 +201,50 @@
         } else {
           showAlert("Email ou senha incorretos. Tente novamente.");
         }
+
+        cleanFormFields(emailElement, passwordElement);
       }
 
-      function isValidUser(email, password) {
-        return users.some(
-          (user) => user.email === email && user.password === password
-        );
+      // General functions
+      function showAlert(message) {
+        alert(message);
       }
 
       function isInputEmpty(email, password) {
         return email === "" || password === "";
       }
 
-      function showAlert(message) {
-        alert(message);
+      function cleanFormFields(emailElement, passwordElement) {
+        emailElement.value = "";
+        passwordElement.value = "";
       }
 
-      // <!-- Activate Form Function --!>
+      function handleFormTypeClick(event) {
+        const changeFormType = (showForm, hideForm) => {
+          showForm.classList.remove("hidden");
+          showForm.classList.add("flex");
 
-      // Variables
+          hideForm.classList.remove("flex");
+          hideForm.classList.add("hidden");
+        };
 
-      const loginDivElement = document.getElementById("loginDiv");
-      const signUpDivElement = document.getElementById("signUpDiv");
+        const changeSelectedFormType = (evt) => {
+          const activatedFormTypeClass =
+            "px-1 border-b border-[#5F7C8D] text-[#5F7C8D] font-semibold";
+          const deactivatedFormTypeClass =
+            "text-[#5f7c8d3e] font-semibold hover:text-[#4B687A] hover:opacity-70";
 
-      // Functions
+          if (event.target === loginDivElement) {
+            loginDivElement.className = activatedFormTypeClass;
+            signUpDivElement.className = deactivatedFormTypeClass;
+          }
 
-      const changeSelectedFormType = (evt) => {
-        const activatedFormTypeClass =
-          "px-1 border-b border-[#5F7C8D] text-[#5F7C8D] font-semibold";
-        const deactivatedFormTypeClass =
-          "text-[#5f7c8d3e] font-semibold hover:text-[#4B687A] hover:opacity-70";
+          if (event.target === signUpDivElement) {
+            signUpDivElement.className = activatedFormTypeClass;
+            loginDivElement.className = deactivatedFormTypeClass;
+          }
+        };
 
-        if (event.target === loginDivElement) {
-          loginDivElement.className = activatedFormTypeClass;
-          signUpDivElement.className = deactivatedFormTypeClass;
-        }
-
-        if (event.target === signUpDivElement) {
-          signUpDivElement.className = activatedFormTypeClass;
-          loginDivElement.className = deactivatedFormTypeClass;
-        }
-      };
-
-      const changeFormType = (showForm, hideForm) => {
-        showForm.classList.remove("hidden");
-        showForm.classList.add("flex");
-
-        hideForm.classList.remove("flex");
-        hideForm.classList.add("hidden");
-      };
-
-      const handleFormTypeClick = (event) => {
         changeSelectedFormType(event);
 
         if (event.target === loginDivElement) {
@@ -263,9 +258,11 @@
             document.getElementById("loginForm")
           );
         }
-      };
+      }
 
       // Event listeners
+      loginFormElement.addEventListener("submit", handleLogin);
+      signUpFormElement.addEventListener("submit", handleSignUp);
       loginDivElement.addEventListener("click", handleFormTypeClick);
       signUpDivElement.addEventListener("click", handleFormTypeClick);
     </script>
