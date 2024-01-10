@@ -135,8 +135,28 @@
     <!-- Login Submit Function  -->
     <script>
       const loginFormElement = document.getElementById("loginForm");
+      const signUpFormElement = document.getElementById("signUpForm");
+
+      const users = [
+        { email: "gabriel@simoa.com", password: "admin" },
+        // Adicione outros usuários aqui, se necessário
+      ];
 
       loginFormElement.addEventListener("submit", handleLoginSubmit);
+      signUpFormElement.addEventListener("submit", handleSignUpSubmit);
+
+      function handleSignUpSubmit(event) {
+        event.preventDefault();
+
+        const emailElement = document.getElementById("signUpEmail");
+        const passwordElement = document.getElementById("signUpPassword");
+
+        const emailValue = emailElement.value.trim();
+        const passwordValue = passwordElement.value.trim();
+
+        users.push({ email: emailValue, password: passwordValue });
+        showAlert("Cadastro realizado com sucesso!");
+      }
 
       function handleLoginSubmit(event) {
         event.preventDefault();
@@ -147,7 +167,7 @@
         const emailValue = emailElement.value.trim();
         const passwordValue = passwordElement.value.trim();
 
-        if (isCredentialsValid(emailValue, passwordValue)) {
+        if (isValidUser(emailValue, passwordValue)) {
           showAlert("Login bem-sucedido! Seja bem-vindo(a)!");
         } else if (isInputEmpty(emailValue, passwordValue)) {
           showAlert("Por favor, preencha todos os campos.");
@@ -156,8 +176,10 @@
         }
       }
 
-      function isCredentialsValid(email, password) {
-        return email === "gabriel@simoa.com" && password === "admin";
+      function isValidUser(email, password) {
+        return users.some(
+          (user) => user.email === email && user.password === password
+        );
       }
 
       function isInputEmpty(email, password) {
