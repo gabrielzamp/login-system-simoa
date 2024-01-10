@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Document</title>
+  </head>
+  <body class="bg-gray-200 lg:flex lg:items-center h-screen">
+    <div
+      class="bg-[url('assets/img/leaf-background.png')] w-screen h-screen bg-cover flex items-center lg:hidden"
+    >
+      <div class="w-full md:w-10/12 md:mx-auto">
+        <div
+          class="w-10/12 md:w-9/12 py-8 md:py-10 mx-auto bg-white rounded-xl flex flex-col items-center"
+        >
+          <div class="w-11/12 md:w-8/12 mx-auto">
+            <div class="w-11/12 mx-auto">
+              <div class="text-2xl flex items-end text-[#5F7C8D] w-11/12">
+                <span class="text-3xl font-bold mr-2">Olá, </span>
+                você!
+              </div>
+            </div>
+          </div>
+
+          <div class="py-5 w-11/12 mx-auto">
+            <div class="flex w-11/12 mx-auto justify-center gap-3">
+              <div class="px-1 border-b border-[#5F7C8D]">
+                <p class="text-[#5F7C8D] font-semibold">Login</p>
+              </div>
+              <div class="">
+                <p class="text-[#5f7c8d3e] font-semibold">SignUp</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="py-1 w-10/12 md:w-9/12 mx-auto">
+            <form
+              id="myFormMobile"
+              class="flex flex-col w-11/12 mx-auto justify-center gap-4"
+              action=""
+            >
+              <div class="py-2 w-full">
+                <input
+                  class="border-b border-[#4B687A] w-full text-xs font-light px-1 pb-1"
+                  type="email"
+                  name="email"
+                  id="emailMobile"
+                  placeholder="Enter your email"
+                />
+              </div>
+              <div class="pb-2 w-full">
+                <input
+                  class="border-b border-[#4B687A] w-full text-xs font-light px-1 pb-1"
+                  type="password"
+                  name="password"
+                  id="passwordMobile"
+                  placeholder="Enter Password"
+                />
+              </div>
+              <button
+                class="py-2 text-sm w-full text-slate-50 bg-[#4B687A] rounded"
+              >
+                Login
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-8/12 mx-auto rounded-xl bg-white">
+      <div class="hidden lg:flex w-full">
+        <!-- Image banner -->
+        <div class="w-full rounded-l-xl">
+          <img
+            src="assets/img/leaf-background.png"
+            alt=""
+            class="rounded-l-xl"
+          />
+        </div>
+
+        <!-- Login card -->
+        <div class="rounded-r-xl w-full flex items-center">
+          <div class="w-full mx-auto">
+            <div
+              class="py-14 mx-auto bg-white rounded-xl flex flex-col items-center"
+            >
+              <div class="w-11/12 md:w-8/12 mx-auto">
+                <div class="w-11/12 mx-auto">
+                  <div class="text-2xl flex items-end text-[#5F7C8D] w-11/12">
+                    <span class="text-3xl font-bold mr-2">Olá, </span>
+                    você!
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-8 pb-10 w-11/12 mx-auto">
+                <div class="flex w-11/12 mx-auto justify-center gap-4">
+                  <div class="px-1 border-b border-[#5F7C8D]">
+                    <p class="text-[#5F7C8D] font-semibold">Login</p>
+                  </div>
+                  <div class="">
+                    <p class="text-[#5f7c8d3e] font-semibold">SignUp</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="py-1 w-10/12 md:w-9/12 mx-auto">
+                <form
+                  class="flex flex-col w-11/12 mx-auto justify-center gap-4"
+                  action=""
+                  id="myFormDesktop"
+                >
+                  <div class="py-2 w-full">
+                    <input
+                      class="border-b border-[#4B687A] w-full text-xs font-light px-1 pb-1"
+                      type="email"
+                      name="email"
+                      id="emailDesktop"
+                      placeholder="Enter your email"
+                    />
+                  </div>
+                  <div class="pb-2 w-full">
+                    <input
+                      class="border-b border-[#4B687A] w-full text-xs font-light px-1 pb-1"
+                      type="password"
+                      name="password"
+                      id="passwordDesktop"
+                      placeholder="Enter Password"
+                    />
+                  </div>
+                  <button
+                    id="loginButtonDesktop"
+                    class="py-2 text-sm w-full text-slate-50 bg-[#4B687A] rounded hover:opacity-90"
+                    "
+                  >
+                    Login
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const myFormElementDesktop = document.getElementById('myFormDesktop')
+      myFormElementDesktop.addEventListener("submit", handleSubmitDesktop);
+
+      const myFormElementMobile = document.getElementById('myFormMobile')
+      myFormElementMobile.addEventListener("submit", handleSubmitMobile);
+
+
+      function handleSubmitDesktop(evt) {
+
+        evt.preventDefault();
+        const emailElement = document.getElementById("emailDesktop");
+        const passwordElement = document.getElementById("passwordDesktop");
+
+        const emailValue = emailElement.value.trim();
+        const passwordValue = passwordElement.value.trim();
+
+        if (emailValue === "gabriel@simoa.com" && passwordValue === "admin") {
+        alert("Login bem-sucedido! Seja bem-vindo(a)!");
+      } else if (emailValue === "" || passwordValue === "") {
+        alert("Por favor, preencha todos os campos.");
+      } else {
+        alert("Email ou senha incorretos. Tente novamente.");
+      }
+      }
+
+      function handleSubmitMobile(evt) {
+
+      evt.preventDefault();
+      const emailElement = document.getElementById("emailMobile");
+      const passwordElement = document.getElementById("passwordMobile");
+
+      const emailValue = emailElement.value.trim();
+      const passwordValue = passwordElement.value.trim();
+
+      if (emailValue === "gabriel@simoa.com" && passwordValue === "admin") {
+      alert("Login bem-sucedido! Seja bem-vindo(a)!");
+      } else if (emailValue === "" || passwordValue === "") {
+      alert("Por favor, preencha todos os campos.");
+      } else {
+      alert("Email ou senha incorretos. Tente novamente.");
+      }
+      }
+
+
+    </script>
+  </body>
+</html>
