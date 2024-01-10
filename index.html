@@ -136,13 +136,13 @@
     <script>
       const loginFormElement = document.getElementById("loginForm");
 
-      loginFormElement.addEventListener("submit", handleSubmit);
+      loginFormElement.addEventListener("submit", handleLoginSubmit);
 
-      function handleSubmit(evt) {
-        evt.preventDefault();
+      function handleLoginSubmit(event) {
+        event.preventDefault();
 
-        const emailElement = document.getElementById("email");
-        const passwordElement = document.getElementById("password");
+        const emailElement = document.getElementById("loginEmail");
+        const passwordElement = document.getElementById("loginPassword");
 
         const emailValue = emailElement.value.trim();
         const passwordValue = passwordElement.value.trim();
@@ -167,10 +167,9 @@
       function showAlert(message) {
         alert(message);
       }
-    </script>
 
-    <!-- Activate Form Function -->
-    <script>
+      // <!-- Activate Form Function --!>
+
       // Variables
 
       const loginDivElement = document.getElementById("loginDiv");
@@ -178,7 +177,7 @@
 
       // Functions
 
-      const changeSelectedFormType = (event) => {
+      const changeSelectedFormType = (evt) => {
         const activatedFormTypeClass =
           "px-1 border-b border-[#5F7C8D] text-[#5F7C8D] font-semibold";
         const deactivatedFormTypeClass =
