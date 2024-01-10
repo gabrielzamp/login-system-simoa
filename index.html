@@ -137,15 +137,12 @@
       const loginFormElement = document.getElementById("loginForm");
       const signUpFormElement = document.getElementById("signUpForm");
 
-      const users = [
-        { email: "gabriel@simoa.com", password: "admin" },
-        // Adicione outros usuários aqui, se necessário
-      ];
+      const users = [{ email: "gabriel@simoa.com", password: "admin" }];
 
-      loginFormElement.addEventListener("submit", handleLoginSubmit);
-      signUpFormElement.addEventListener("submit", handleSignUpSubmit);
+      loginFormElement.addEventListener("submit", handleLogin);
+      signUpFormElement.addEventListener("submit", handleSignUp);
 
-      function handleSignUpSubmit(event) {
+      function handleSignUp(event) {
         event.preventDefault();
 
         const emailElement = document.getElementById("signUpEmail");
@@ -154,11 +151,39 @@
         const emailValue = emailElement.value.trim();
         const passwordValue = passwordElement.value.trim();
 
-        users.push({ email: emailValue, password: passwordValue });
-        showAlert("Cadastro realizado com sucesso!");
+        if (isInputEmpty(emailValue, passwordValue)) {
+          showAlert("Por favor, preencha todos os campos.");
+        } else if (isUserExistsWithSamePassword(emailValue, passwordValue)) {
+          const existingUser = users.find(
+            (user) => user.password === passwordValue
+          );
+          showAlert(
+            `Já existe um usuário com o email "${existingUser.email}" e a mesma senha "${passwordValue}".`
+          );
+        } else {
+          users.push({
+            email: emailValue,
+            password: passwordValue,
+          });
+          showAlert("Cadastro realizado com sucesso!");
+          emailElement.value = "";
+          passwordElement.value = "";
+        }
       }
 
-      function handleLoginSubmit(event) {
+      function isInputEmpty(email, password) {
+        return email === "" || password === "";
+      }
+
+      function isUserExistsWithSamePassword(email, password) {
+        return users.some((user) => user.password === password);
+      }
+
+      function showAlert(message) {
+        alert(message);
+      }
+
+      function handleLogin(event) {
         event.preventDefault();
 
         const emailElement = document.getElementById("loginEmail");
@@ -238,16 +263,6 @@
             document.getElementById("loginForm")
           );
         }
-
-        //   if (event.target === loginDivElement) {
-        //     changeFormType(loginFormElement, signUpFormElement);
-        //     loginDivElement.classList.remove(deactivatedFormTypeClass);
-        //     signUpDivElement.classList.add(deactivatedFormTypeClass);
-        //   } else if (event.target === signUpDivElement) {
-        //     changeFormType(signUpFormElement, loginFormElement);
-        //     signUpDivElement.classList.remove(deactivatedFormTypeClass);
-        //     loginDivElement.classList.add(deactivatedFormTypeClass);
-        //   }
       };
 
       // Event listeners
