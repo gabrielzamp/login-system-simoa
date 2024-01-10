@@ -15,82 +15,20 @@
   <body
     class="flex items-center h-screen bg-gray-200 bg-cover bg-[url('https://conasems-ava-prod.s3.sa-east-1.amazonaws.com/portal/paginas/blue-white-leafy-background-vector-53876-136080-1-1704912731.png')] lg:bg-none"
   >
-    <!-- Mobile version -->
-    <!-- <div
-      class="bg-[url('assets/img/leaf-background.png')] w-screen h-screen bg-cover flex items-center lg:hidden"
-    >
-      <div class="w-full md:w-10/12 md:mx-auto">
-        <div
-          class="flex flex-col items-center w-10/12 py-8 mx-auto bg-white md:w-9/12 md:py-10 rounded-xl"
-        >
-          <div class="w-11/12 mx-auto md:w-8/12">
-            <div class="w-11/12 mx-auto">
-              <div class="text-2xl flex items-end text-[#5F7C8D] w-11/12">
-                <span class="mr-2 text-3xl font-bold">Olá, </span>
-                você!
-              </div>
-            </div>
-          </div>
-
-          <div class="w-11/12 py-5 mx-auto">
-            <div class="flex justify-center w-11/12 gap-3 mx-auto">
-              <div class="px-1 border-b border-[#5F7C8D]">
-                <p class="text-[#5F7C8D] font-semibold">Login</p>
-              </div>
-              <div class="">
-                <p class="text-[#5f7c8d3e] font-semibold">SignUp</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="w-10/12 py-1 mx-auto md:w-9/12">
-            <form
-              id="myFormMobile"
-              class="flex flex-col justify-center w-11/12 gap-4 mx-auto"
-              action=""
-            >
-              <div class="w-full py-2">
-                <input
-                  class="border-b border-[#4B687A] w-full text-xs font-light px-1 pb-1"
-                  type="email"
-                  name="email"
-                  id="emailMobile"
-                  placeholder="Enter your email"
-                />
-              </div>
-              <div class="w-full pb-2">
-                <input
-                  class="border-b border-[#4B687A] w-full text-xs font-light px-1 pb-1"
-                  type="password"
-                  name="password"
-                  id="passwordMobile"
-                  placeholder="Enter Password"
-                />
-              </div>
-              <button
-                class="py-2 text-sm w-full text-slate-50 bg-[#4B687A] rounded"
-              >
-                Login
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
     <div class="w-8/12 mx-auto bg-white rounded-xl">
+      <!--  -->
       <div class="flex w-full">
         <!-- Image banner -->
-        <div class="hidden w-full rounded-l-xl lg:block">
+        <section class="hidden w-full rounded-l-xl lg:block">
           <img
             src="https://conasems-ava-prod.s3.sa-east-1.amazonaws.com/portal/paginas/blue-white-leafy-background-vector-53876-136080-1-1704912731.png"
             alt=""
             class="rounded-l-xl"
           />
-        </div>
+        </section>
 
-        <!-- Login card -->
-        <div class="flex items-center w-full rounded-r-xl">
+        <!-- Login section -->
+        <section class="flex items-center w-full rounded-r-xl">
           <div class="w-full mx-auto">
             <div
               class="flex flex-col items-center mx-auto bg-white py-14 rounded-xl"
@@ -106,19 +44,22 @@
 
               <div class="w-11/12 pt-8 pb-10 mx-auto">
                 <div class="flex justify-center w-11/12 gap-4 mx-auto">
-                  <div class="px-1 border-b border-[#5F7C8D]">
-                    <p class="text-[#5F7C8D] font-semibold">Login</p>
+                  <div
+                    id="loginDiv"
+                    class="px-1 border-b border-[#5F7C8D] text-[#5F7C8D] font-semibold"
+                  >
+                    Login
                   </div>
-                  <div class="" onclick="activeForm()">
-                    <p
-                      class="text-[#5f7c8d3e] font-semibold hover:text-[#4B687A] hover:opacity-70"
-                    >
-                      SignUp
-                    </p>
+                  <div
+                    id="signUpDiv"
+                    class="text-[#5f7c8d3e] font-semibold hover:text-[#4B687A] hover:opacity-70"
+                  >
+                    SignUp
                   </div>
                 </div>
               </div>
 
+              <!-- Form section -->
               <div class="w-10/12 py-1 mx-auto md:w-9/12">
                 <!-- Login form -->
                 <form
@@ -131,7 +72,7 @@
                       class="border-b border-[#4B687A] w-full text-xs font-light px-1 pb-1"
                       type="email"
                       name="email"
-                      id="email"
+                      id="loginEmail"
                       placeholder="Enter your email"
                     />
                   </div>
@@ -140,7 +81,7 @@
                       class="border-b border-[#4B687A] w-full text-xs font-light px-1 pb-1"
                       type="password"
                       name="password"
-                      id="password"
+                      id="loginPassword"
                       placeholder="Enter Password"
                     />
                   </div>
@@ -157,15 +98,15 @@
                 <form
                   class="flex-col justify-center hidden w-11/12 gap-4 mx-auto"
                   action=""
-                  id="signForm"
+                  id="signUpForm"
                 >
                   <div class="w-full py-2">
                     <input
                       class="border-b border-[#4B687A] w-full text-xs font-light px-1 pb-1"
                       type="email"
                       name="email"
-                      id="email"
-                      placeholder="Enter your email"
+                      id="signUpEmail"
+                      placeholder="Register your email"
                     />
                   </div>
                   <div class="w-full pb-2">
@@ -173,8 +114,8 @@
                       class="border-b border-[#4B687A] w-full text-xs font-light px-1 pb-1"
                       type="password"
                       name="password"
-                      id="password"
-                      placeholder="Enter Password"
+                      id="signUpPassword"
+                      placeholder="Register your password"
                     />
                   </div>
                   <button
@@ -187,7 +128,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </div>
 
@@ -229,5 +170,68 @@
     </script>
 
     <!-- Activate Form Function -->
+    <script>
+      // Variables
+
+      const loginDivElement = document.getElementById("loginDiv");
+      const signUpDivElement = document.getElementById("signUpDiv");
+
+      // Functions
+
+      const changeSelectedFormType = (event) => {
+        const activatedFormTypeClass =
+          "px-1 border-b border-[#5F7C8D] text-[#5F7C8D] font-semibold";
+        const deactivatedFormTypeClass =
+          "text-[#5f7c8d3e] font-semibold hover:text-[#4B687A] hover:opacity-70";
+
+        if (event.target === loginDivElement) {
+          loginDivElement.className = activatedFormTypeClass;
+          signUpDivElement.className = deactivatedFormTypeClass;
+        }
+
+        if (event.target === signUpDivElement) {
+          signUpDivElement.className = activatedFormTypeClass;
+          loginDivElement.className = deactivatedFormTypeClass;
+        }
+      };
+
+      const changeFormType = (showForm, hideForm) => {
+        showForm.classList.remove("hidden");
+        showForm.classList.add("flex");
+
+        hideForm.classList.remove("flex");
+        hideForm.classList.add("hidden");
+      };
+
+      const handleFormTypeClick = (event) => {
+        changeSelectedFormType(event);
+
+        if (event.target === loginDivElement) {
+          changeFormType(
+            document.getElementById("loginForm"),
+            document.getElementById("signUpForm")
+          );
+        } else if (event.target === signUpDivElement) {
+          changeFormType(
+            document.getElementById("signUpForm"),
+            document.getElementById("loginForm")
+          );
+        }
+
+        //   if (event.target === loginDivElement) {
+        //     changeFormType(loginFormElement, signUpFormElement);
+        //     loginDivElement.classList.remove(deactivatedFormTypeClass);
+        //     signUpDivElement.classList.add(deactivatedFormTypeClass);
+        //   } else if (event.target === signUpDivElement) {
+        //     changeFormType(signUpFormElement, loginFormElement);
+        //     signUpDivElement.classList.remove(deactivatedFormTypeClass);
+        //     loginDivElement.classList.add(deactivatedFormTypeClass);
+        //   }
+      };
+
+      // Event listeners
+      loginDivElement.addEventListener("click", handleFormTypeClick);
+      signUpDivElement.addEventListener("click", handleFormTypeClick);
+    </script>
   </body>
 </html>
