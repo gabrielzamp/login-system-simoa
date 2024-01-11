@@ -16,7 +16,7 @@
     class="flex items-center h-screen bg-gray-200 bg-cover bg-[url('https://conasems-ava-prod.s3.sa-east-1.amazonaws.com/portal/paginas/blue-white-leafy-background-vector-53876-136080-1-1704912731.png')] lg:bg-none"
   >
     <div
-      class="w-8/12 mx-auto bg-white shadow-xl 2xl:w-4/12 3xl:w-3/12 rounded-xl"
+      class="w-8/12 mx-auto bg-white shadow-sm md:w-7/12 lg:w-6/12 2xl:w-4/12 3xl:w-3/12 rounded-xl"
     >
       <!--  -->
       <div class="flex w-full">
@@ -89,7 +89,7 @@
                   </div>
                   <button
                     id="loginButton"
-                    class="py-2 text-sm w-full text-slate-50 bg-[#4B687A] rounded hover:opacity-90"
+                    class="py-2 text-sm w-full text-slate-50 bg-[#4B687A] rounded hover:opacity-90 font-medium"
                   >
                     Login
                   </button>
@@ -122,7 +122,7 @@
                   </div>
                   <button
                     id="signUpButton"
-                    class="py-2 text-sm w-full text-slate-50 bg-[#4B687A] rounded hover:opacity-90"
+                    class="py-2 text-sm w-full text-slate-50 bg-[#4B687A] rounded hover:opacity-90 font-medium"
                   >
                     Sign Up
                   </button>
@@ -212,36 +212,42 @@
           hideForm.classList.remove("flex");
           hideForm.classList.add("hidden");
         };
-        const changeSelectedFormType = (evt) => {
+        const changeSelectedFormType = (event) => {
           const activatedFormTypeClass =
-            "px-1 border-b border-[#5F7C8D] text-[#5F7C8D] font-semibold";
+            "px-1 border-b border-[#5F7C8D] text-[#5F7C8D] font-semibold font-medium";
           const deactivatedFormTypeClass =
-            "text-[#5f7c8d3e] font-semibold hover:text-[#4B687A] hover:opacity-70";
+            "text-[#5f7c8d3e] font-semibold hover:text-[#4B687A] hover:opacity-70 font-medium";
+
+          // Change header
+
+          changeHeader = () => {
+            if (event.target === loginDivElement) {
+              loginDivElement.className = activatedFormTypeClass;
+              signUpDivElement.className = deactivatedFormTypeClass;
+            }
+
+            if (event.target === signUpDivElement) {
+              signUpDivElement.className = activatedFormTypeClass;
+              loginDivElement.className = deactivatedFormTypeClass;
+            }
+          };
+
+          // Validate which button was clicked
 
           if (event.target === loginDivElement) {
-            loginDivElement.className = activatedFormTypeClass;
-            signUpDivElement.className = deactivatedFormTypeClass;
-          }
-
-          if (event.target === signUpDivElement) {
-            signUpDivElement.className = activatedFormTypeClass;
-            loginDivElement.className = deactivatedFormTypeClass;
+            changeFormType(
+              document.getElementById("loginForm"),
+              document.getElementById("signUpForm")
+            );
+          } else if (event.target === signUpDivElement) {
+            changeFormType(
+              document.getElementById("signUpForm"),
+              document.getElementById("loginForm")
+            );
           }
         };
 
         changeSelectedFormType(event);
-
-        if (event.target === loginDivElement) {
-          changeFormType(
-            document.getElementById("loginForm"),
-            document.getElementById("signUpForm")
-          );
-        } else if (event.target === signUpDivElement) {
-          changeFormType(
-            document.getElementById("signUpForm"),
-            document.getElementById("loginForm")
-          );
-        }
       }
 
       // General functions
