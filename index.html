@@ -15,7 +15,9 @@
   <body
     class="flex items-center h-screen bg-gray-200 bg-cover bg-[url('https://conasems-ava-prod.s3.sa-east-1.amazonaws.com/portal/paginas/blue-white-leafy-background-vector-53876-136080-1-1704912731.png')] lg:bg-none"
   >
-    <div class="w-8/12 mx-auto bg-white rounded-xl">
+    <div
+      class="w-8/12 mx-auto bg-white shadow-xl 2xl:w-4/12 3xl:w-3/12 rounded-xl"
+    >
       <!--  -->
       <div class="flex w-full">
         <!-- Image banner -->
@@ -142,7 +144,7 @@
       // Users array
       const users = [{ email: "gabriel@simoa.com", password: "admin" }];
 
-      // Login and Sign Up functions
+      // Event handler functions
       function handleSignUp(event) {
         event.preventDefault();
 
@@ -177,7 +179,6 @@
           cleanFormFields(emailElement, passwordElement);
         }
       }
-
       function handleLogin(event) {
         event.preventDefault();
 
@@ -202,18 +203,6 @@
         }
 
         cleanFormFields(emailElement, passwordElement);
-      }
-
-      // General functions
-      function showAlert(message) {
-        alert(message);
-      }
-      function isInputEmpty(email, password) {
-        return email === "" || password === "";
-      }
-      function cleanFormFields(emailElement, passwordElement) {
-        emailElement.value = "";
-        passwordElement.value = "";
       }
       function handleFormTypeClick(event) {
         const changeFormType = (showForm, hideForm) => {
@@ -253,6 +242,18 @@
             document.getElementById("loginForm")
           );
         }
+      }
+
+      // General functions
+      function showAlert(message) {
+        alert(message);
+      }
+      function isInputEmpty(email, password) {
+        return email === "" || password === "";
+      }
+      function cleanFormFields(emailElement, passwordElement) {
+        emailElement.value = "";
+        passwordElement.value = "";
       }
 
       // Event listeners
