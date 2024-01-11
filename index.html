@@ -132,15 +132,14 @@
       </div>
     </div>
 
-    <!-- Login Submit Function  -->
     <script>
       // Variables
       const loginFormElement = document.getElementById("loginForm");
       const signUpFormElement = document.getElementById("signUpForm");
-
       const loginDivElement = document.getElementById("loginDiv");
       const signUpDivElement = document.getElementById("signUpDiv");
 
+      // Users array
       const users = [{ email: "gabriel@simoa.com", password: "admin" }];
 
       // Login and Sign Up functions
@@ -209,16 +208,13 @@
       function showAlert(message) {
         alert(message);
       }
-
       function isInputEmpty(email, password) {
         return email === "" || password === "";
       }
-
       function cleanFormFields(emailElement, passwordElement) {
         emailElement.value = "";
         passwordElement.value = "";
       }
-
       function handleFormTypeClick(event) {
         const changeFormType = (showForm, hideForm) => {
           showForm.classList.remove("hidden");
@@ -227,7 +223,6 @@
           hideForm.classList.remove("flex");
           hideForm.classList.add("hidden");
         };
-
         const changeSelectedFormType = (evt) => {
           const activatedFormTypeClass =
             "px-1 border-b border-[#5F7C8D] text-[#5F7C8D] font-semibold";
