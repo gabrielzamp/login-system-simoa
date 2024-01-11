@@ -229,20 +229,25 @@
               loginDivElement.className = deactivatedFormTypeClass;
             }
           };
+
+          const validateWhichButtonWasClicked = () => {
+            if (event.target === loginDivElement) {
+              changeFormType(
+                document.getElementById("loginForm"),
+                document.getElementById("signUpForm")
+              );
+            } else if (event.target === signUpDivElement) {
+              changeFormType(
+                document.getElementById("signUpForm"),
+                document.getElementById("loginForm")
+              );
+            }
+          };
+
+          validateWhichButtonWasClicked();
           changeHeader(event);
 
           // Validate which button was clicked
-          if (event.target === loginDivElement) {
-            changeFormType(
-              document.getElementById("loginForm"),
-              document.getElementById("signUpForm")
-            );
-          } else if (event.target === signUpDivElement) {
-            changeFormType(
-              document.getElementById("signUpForm"),
-              document.getElementById("loginForm")
-            );
-          }
         };
 
         changeSelectedFormType(event);
