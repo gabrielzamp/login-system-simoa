@@ -218,9 +218,7 @@
           const deactivatedFormTypeClass =
             "text-[#5f7c8d3e] font-semibold hover:text-[#4B687A] hover:opacity-70 font-medium";
 
-          // Change header
-
-          changeHeader = () => {
+          const changeHeader = (event) => {
             if (event.target === loginDivElement) {
               loginDivElement.className = activatedFormTypeClass;
               signUpDivElement.className = deactivatedFormTypeClass;
@@ -231,6 +229,7 @@
               loginDivElement.className = deactivatedFormTypeClass;
             }
           };
+          changeHeader(event);
 
           // Validate which button was clicked
           if (event.target === loginDivElement) {
